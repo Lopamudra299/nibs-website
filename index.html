@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NIBS Bridge Technology</title>
+  <style>
+    :root {
+      --main-color: #09b084;
+      --accent-color: #e0e4cc;
+      --text-color: #333;
+      --bg-color: #f7f7f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: var(--main-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s, transform 1s;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+      color: var(--main-color);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background-color: var(--accent-color);
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .service {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    footer {
+      background-color: var(--main-color);
+      color: #000;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="NIBS Logo" />
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>NIBS Bridge Technology</h1>
+    <p>Let's Architect the Future</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We Are Product Designers From India. We Design Interfaces That Users Love.</p>
+    <p>NIBS Bridge Technology (P) Ltd. started as a heartfelt vision born from the cherished memories of our loved ones, driven by a desire to work for ourselves and make a meaningful impact in the fields of technology and human resources. What began as a simple thought evolved into a mission to bridge the gap between businesses and technology with innovative solutions that drive growth, efficiency, and transformation.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-list">
+      <div class="service">Strategy & Research</div>
+      <div class="service">Web Development</div>
+      <div class="service">Web Solution</div>
+      <div class="service">Digital Marketing</div>
+      <div class="service">App Design</div>
+      <div class="service">Graphic Design</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Phone:</strong> 0674-3193-323</p>
+    <p><strong>Email:</strong> info@nibsbridge.com | career@nibsbridge.com</p>
+    <p><strong>Address:</strong> Bhubaneswar, Odisha, India</p>
+  </section>
+
+  <footer>
+    &copy; 2025 NIBS Bridge Technology. All rights reserved.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const options = {
+      threshold: 0.2,
+    };
+
+    const observer = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
